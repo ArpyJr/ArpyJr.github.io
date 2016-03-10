@@ -64,8 +64,10 @@ var projects = {
 	"projects": [{
 			"title": "project 1",
 			"dates": "February 2016",
-			"description": "This is the first Front-end Web Development project that I have completed",
-			"images": "insert-image-url-here"
+			"description": "This is the first Front-end Web Development project that I have completed.\
+			 It invloved coding grid-layout html and styling it with css. It involved responsive design where webpage changes as the browser\
+			  width changes. Finally, it also involved reducing page weight by optimizing images and setting sources for img tags",
+			"images": "images/project1.jpg"
 		}]
 };
 
