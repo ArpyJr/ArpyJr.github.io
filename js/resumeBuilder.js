@@ -123,10 +123,25 @@ work.display = function() {
 		$(".work-entry:last").append(formatDescription);
 	}
 };
-
 work.display();
 
 //Projects
+projects.display = function() {
+	for (project in projects.projects) {
+		$("#projects").append(HTMLprojectStart);
+		var formatTitle = HTMLprojectTitle.replace("%data%", projects.projects[project].title);
+		$(".project-entry:last").append(formatTitle);
+		var formatDates = HTMLprojectDates.replace("%data", projects.projects[project].dates);
+		$(".project-entry:last").append(formatDates);
+		var formatDescription = HTMLprojectDescription.replace("%data%", projects.projects[project].description);
+		$(".project-entry:last").append(formatDescription);
+		var formatImages = HTMLprojectImage.replace("%data%", projects.projects[project].images);
+		$(".project-entry:last").append(formatImages);
+	}
+};
+projects.display();
 
 //Education
+
+
 //Where I lived
