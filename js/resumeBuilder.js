@@ -7,7 +7,7 @@ var bio = {
 		"github": "KingArpy",
 		"location": "Bellingham, WA"
 	},
-	"welcomeMessage": "Welcome to my resume!(FEND Project 2)",
+	"welcomeMessage": "Welcome to my resume! (FEND Project 2)",
 	"skills": ["fight crime", "play video games", "html/css/javascript"],
 	"biopic": "images/fry.jpg"
 };
@@ -67,4 +67,33 @@ var projects = {
 			"description": "This is the first Front-end Web Development project that I have completed",
 			"images": "insert-image-url-here"
 		}]
+};
+
+
+//Display functions
+bio.display = function() {
+var formatRole = HTMLheaderRole.replace("%data%", bio.role);
+$("#header").prepend(formatRole);
+var formatName = HTMLheaderName.replace("%data%", bio.name);
+$("#header").prepend(formatName);
+
+var formatMobile = HTMLmobile.replace("%data%", bio.contact.mobile);
+var formatEmail = HTMLemail.replace("%data%", bio.contact.email);
+var formatGithub = HTMLgithub.replace("%data%", bio.contact.github);
+var formatLocation = HTMLlocation.replace("%data%", bio.contact.location);
+var contactsArray = [formatMobile, formatEmail, formatGithub, formatLocation];
+for (var i=0; i<contactsArray.length; i++) {
+	$("#topContacts").append(contactsArray[i]);
 }
+
+$("#header").append(HTMLbioPic.replace("%data%", "images/fry.jpg"));
+$("#header").append(HTMLwelcomeMsg.replace("%data%", bio.welcomeMessage));
+
+$("#header").append(HTMLskillsStart);
+for (var i=0; i<bio.skills.length; i++) {
+	var formatSkill = HTMLskills.replace("%data%", bio.skills[i]);
+	$("#skills").append(formatSkill);
+}
+};
+
+bio.display();
