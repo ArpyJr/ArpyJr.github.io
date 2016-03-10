@@ -62,12 +62,17 @@ var work = {
 
 var projects = {
 	"projects": [{
-			"title": "project 1",
+			"title": "Project 1",
 			"dates": "February 2016",
 			"description": "This is the first Front-end Web Development project that I have completed.\
 			 It invloved coding grid-layout html and styling it with css. It involved responsive design where webpage changes as the browser\
 			  width changes. Finally, it also involved reducing page weight by optimizing images and setting sources for img tags",
 			"images": "images/project1.jpg"
+		},{
+			"title": "Fake Project",
+			"dates": "Year 2050",
+			"description": "This is a fake project that I created in order to practice using loops and jquerty to manipulate DOM",
+			"images": "images/fake.jpg"
 		}]
 };
 
@@ -122,5 +127,6 @@ work.display = function() {
 work.display();
 
 //Projects
+
 //Education
 //Where I lived
