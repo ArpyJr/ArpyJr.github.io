@@ -93,6 +93,9 @@ var contactsArray = [formatMobile, formatEmail, formatGithub, formatLocation];
 for (var i=0; i<contactsArray.length; i++) {
 	$("#topContacts").append(contactsArray[i]);
 }
+for (var i=0; i<contactsArray.length; i++) {
+	$("#footerContacts").append(contactsArray[i]);
+}
 
 $("#header").append(HTMLbioPic.replace("%data%", "images/fry.jpg"));
 $("#header").append(HTMLwelcomeMsg.replace("%data%", bio.welcomeMessage));
