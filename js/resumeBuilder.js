@@ -17,7 +17,7 @@ var education = {
 		{
 			"name": "Western Washington University",
 			"location": "Bellingham, WA",
-			"degree": "none",
+			"degree": "No Degree",
 			"majors": "n/a",
 			"dates": "2 years",
 			"url": "http://www.wwu.edu/"
@@ -25,7 +25,7 @@ var education = {
 		{
 			"name": "Whatcom Community College",
 			"location": "Bellingham, WA",
-			"degree": "none",
+			"degree": "No Degree",
 			"majors": "n/a",
 			"dates": "2 quarters",
 			"url": "http://www.whatcom.edu/"
@@ -35,7 +35,7 @@ var education = {
 		{
 			"title": "Front-end Web Development",
 			"school": "Udacity",
-			"date": "1 Month",
+			"dates": "1 Month",
 			"url": "http://www.udacity.com/"
 		}
 	]
@@ -142,6 +142,27 @@ projects.display = function() {
 projects.display();
 
 //Education
-
+education.display = function() {
+	for (school in education.schools) {
+		$("#education").append(HTMLschoolStart);
+		var formatName = HTMLschoolName.replace("%data%", education.schools[school].name);
+		var formatDegree = HTMLschoolDegree.replace("%data%", education.schools[school].degree);
+		var nameDegree = formatName + formatDegree;
+		$(".education-entry:last").append(nameDegree);
+		var formatDates = HTMLschoolDates.replace("%data%", education.schools[school].dates);
+		$(".education-entry:last").append(formatDates);
+		var formatMajor = HTMLschoolMajor.replace("%data%", education.schools[school].majors);
+		$(".education-entry:last").append(formatMajor);
+	}
+	$("#education").append(HTMLonlineClasses);
+	for (school in education.onlineCourses) {
+		$("#education").append(HTMLschoolStart);
+		var titleSchool = HTMLonlineTitle.replace("%data%", education.onlineCourses[school].title) + HTMLonlineSchool.replace("%data%", education.onlineCourses[school].school);
+		$(".education-entry:last").append(titleSchool);
+		$(".education-entry:last").append(HTMLonlineDates.replace("%data%", education.onlineCourses[school].dates));
+		$(".education-entry:last").append(HTMLonlineURL.replace("%data%", education.onlineCourses[school].url));
+	}
+};
+education.display();
 
 //Where I lived
