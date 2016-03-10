@@ -48,14 +48,14 @@ var work = {
 			"title": "fake title 1",
 			"location": "Seoul, South Korea",
 			"dates": "1 year",
-			"description": "this is a first fake job description necessary to complete the project. Location is Seoul, South Korea."
+			"description": "This is a first fake job description necessary to complete the project. Location is Seoul, South Korea."
 		},
 		{
 			"employer": "fake employer 2",
 			"title": "fake title 2",
 			"location": "Saint Louis, MO",
 			"dates": "6 months",
-			"description": "this is a second fake job description. Location is based on Saint Louis."
+			"description": "This is a second fake job description. Location is based on Saint Louis."
 		}
 	]
 };
@@ -71,6 +71,7 @@ var projects = {
 
 
 //Display functions
+//Bio
 bio.display = function() {
 var formatRole = HTMLheaderRole.replace("%data%", bio.role);
 $("#header").prepend(formatRole);
@@ -97,3 +98,27 @@ for (var i=0; i<bio.skills.length; i++) {
 };
 
 bio.display();
+
+//Work
+work.display = function() {
+	for (job in work.jobs) {
+		$("#workExperience").append(HTMLworkStart);
+		var formatEmployer = HTMLworkEmployer.replace("%data%", work.jobs[job].employer);
+		var formatTitle = HTMLworkTitle.replace("%data%", work.jobs[job].title);
+		var employerTitle = formatEmployer + formatTitle;
+		$(".work-entry:last").append(employerTitle);
+
+		var formatDates = HTMLworkDates.replace("%data%", work.jobs[job].dates);
+		$(".work-entry:last").append(formatDates);
+		var formatLocation = HTMLworkLocation.replace("%data%", work.jobs[job].location);
+		$(".work-entry:last").append(formatLocation);
+		var formatDescription = HTMLworkDescription.replace("%data%", work.jobs[job].description);
+		$(".work-entry:last").append(formatDescription);
+	}
+};
+
+work.display();
+
+//Projects
+//Education
+//Where I lived
