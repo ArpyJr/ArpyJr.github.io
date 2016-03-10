@@ -168,3 +168,4 @@ education.display = function() {
 education.display();
 
 //Where I lived
+$("#mapDiv").append(googleMap);
