@@ -1,214 +1,104 @@
-body,
-div,
-ul,
-li,
-p,
-h1,
-h2,
-h3,
-h4,
-h5,
-h6 {
-  padding:0;
-  margin:0;
-  font-family: "Roboto", sans-serif;
+html{
+  background: url("../images/background.jpg") no-repeat center center fixed; 
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+  height: 100%;
 }
 
-.clear-fix {
-  overflow: auto;
+body {
+  margin: 0px;
+  width: 100%;
+  height: 100%;
 }
 
-.education-entry,
-.work-entry,
-.project-entry {
-  padding: 0 5%;
-}
-
-h1 {
-  font-size: 40px;
-  color: #f5a623;
-  line-height: 48px;
-  display: inline;
-}
-
-h2 {
-  font-weight: bold;
-  font-size: 24px;
-  color: #999;
-  line-height: 29px;
-  padding: 10px;
-}
-
-h3 {
-  font-style: italic;
-  font-size: 20px;
-  color: #000;
-  line-height: 22px;
-}
-
-h4 {
-  font-weight: bold;
-  font-size: 14px;
-  color: #4a4a4a;
-  line-height: 17px;
-}
-
-h2,
-h3,
-h4,
-h5 {
-  padding:10px 5%;
-
-}
-
-
-.date-text {
-  font-style: italic;
-  font-size: 14px;
-  color: #999;
-  line-height: 16px;
-  float: left;
-}
-
-.location-text {
-  font-style: italic;
-  font-size: 14px;
-  color: #999;
-  line-height: 16px;
-  float: right;
-
-}
-
-p {
-  font-size: 14px;
-  color: #333;
-  line-height: 21px;
-}
-
-a {
-  color: #1199c3;
-  text-decoration: none;
-  margin-top: 10px;
-  display: block;
-}
-
-.welcome-message {
-  font-style: italic;
-  font-size: 18px;
-  color: #f3f3f3;
-  line-height: 28px;
-}
-
-#skills-h3 {
-  color: #f5ae23;
-  display: none;
-}
-
-.orange {
-  background-color: #f5ae23;
-}
-
-.orange-text {
-  color: #f5ae23;
-}
-
-.white-text {
-  font-weight: bold;
-  color: #fff;
-}
-
-.gray {
-  background-color: #f3f3f3;
-  padding-bottom: 10px;
-  clear:both;
-}
-
-.dark-gray {
-  background-color: #4a4a4a;
-}
-
-/* TODO: Replace with image later */
-#header {
-  background-color: #484848;
-}
-
-.flex-box {
-  display: -webkit-flex;
+#main {
+  margin: 0px;
+  width: 100%;
+  height: 100%;
   display: flex;
-  flex-direction: row;
-  flex-wrap: wrap;
-  justify-content: space-around;
-  padding: 10px;
+  flex-wrap: nowrap;
+  overflow: hidden;
+
 }
 
-.center-content {
-  padding: 2.5% 5%;
+#buttonDiv {
+  position: absolute;
+  height: 100%;
+  width: 100%;
+}
+#width10left, #width10right, .width80 {
+  height: 100%;
+  position: absolute;
 }
 
-ul {
-  list-style-type: none;
+#width10left {
+  width: 10%;
+  margin-left: 0px;
 }
 
-.biopic {
-  float: left;
-  padding: 10px;
-  width: 200px;
-  display: none;
+#width10right {
+  width: 10%;
+  margin-left:90%;
 }
 
-img {
-  padding: 10px;
+.width80 {
+  width: 80%;
+  margin-left:10%;
 }
 
-span {
-  padding: 5px;
+button {
+  position: absolute;
+  height: 25px;
+  width: 25px;
+  left: calc((100% - 25px)/2);
+  top: calc((100%-25px)/2);
+}
+
+#buttonLeft {
+  margin-left: calc(5% - 12.5px);
+}
+
+#buttonRight {
+  margin-right: calc(5% - 12.5px);
+  float: right;
+}
+
+#header, #workExperience, #projects, #education, #mapDiv, #lets-connect {
+  box-sizing: border-box;
+  max-width: 1120px;
+  min-width: 80%;
+  max-height: 100%;
+  height: 80%;
+  margin: auto;
+  margin-left: 20%;
+  border: 2px solid red;
+  background: rgba(210, 210, 210, 0.77);
+  border-radius: 15px;
+}
+
+#header {
+  margin-left: 10%;
+  transition: margin 1s;
+  -webkit-transition: margin 1s;
 }
 
 #lets-connect {
-  text-align: center;
+  margin-right: 10%;
 }
 
-/* Media queries to handle various device widths */
-
-@media only screen and (max-width: 1024px) {
-  #lets-connect {
-    margin-top: 5%;
-  }
-}
-
-@media only screen and (max-width:900px) {
-  .biopic {
-    width: 175px;
-  }
-}
-
-@media only screen and (max-width: 750px) {
-  #lets-connect {
-    margin-top: 10%;
-  }
-  .biopic {
-    width: 150px;
-  }
-  .welcome-message {
-    display: none;
-  }
+img {
+  max-height: 300px;
+  max-width: 300px;
 }
 
 #map {
   display: block;
   height: 100%;
-  margin: 0 5%;
 }
 
 #mapDiv {
-  height: 400px;
   width: 100%;
-  padding-bottom: 5%;
-}
-
-@media only screen and (min-width: 750px) {
-  #skills-h3,
-  .biopic {
-    display: block;
-  }
+  height: 100%;
 }

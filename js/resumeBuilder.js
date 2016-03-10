@@ -169,3 +169,26 @@ education.display();
 
 //Where I lived
 $("#mapDiv").append(googleMap);
+
+//extras
+$("#main").prepend("<div id='buttonDiv'></div>");
+$("#buttonDiv").append("<div id='width10left'></div>");
+$("#buttonDiv").append("<div class='width80'></div>");
+$("#buttonDiv").append("<div id='width10right'></div>");
+$("#width10left").prepend("<button id='buttonLeft' onclick='moveLeft()'>&lt</button>");
+$("#width10right").prepend("<button id='buttonRight' onclick='moveRight()'>&gt</button>");
+
+function moveLeft() {
+	var marginLeftValue = $("#header").css("margin-left");
+	$("#header").css("margin-left", "calc(" + marginLeftValue + " + 100%)");
+	if ($("#header").css("margin-left").replace("px","") > -500) {
+	$("#buttonLeft").remove();
+	}
+}
+function moveRight() {
+	var marginLeftValue = $("#header").css("margin-left");
+	$("#header").css("margin-left", "calc(" + marginLeftValue + " - 100%)");
+	if ($("#header").css("margin-left").replace("px","") < -500) {
+	$("#width10left").append("<button id='buttonLeft' onclick='moveLeft()'>&lt</button>");
+	}
+}
