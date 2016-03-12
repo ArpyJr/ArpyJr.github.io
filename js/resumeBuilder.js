@@ -67,12 +67,12 @@ var projects = {
 			"description": "This is the first Front-end Web Development project that I have completed.\
 			 It invloved coding grid-layout html and styling it with css. It involved responsive design where webpage changes as the browser\
 			  width changes. Finally, it also involved reducing page weight by optimizing images and setting sources for img tags",
-			"images": "images/project1.jpg"
+			"images": "images/respimg/project1-medium.jpg"
 		},{
 			"title": "Fake Project",
 			"dates": "Year 2050",
 			"description": "This is a fake project that I created in order to practice using loops and jquerty to manipulate DOM",
-			"images": "images/fake.jpg"
+			"images": "images/respimg/fake-medium.jpg"
 		}]
 };
 
