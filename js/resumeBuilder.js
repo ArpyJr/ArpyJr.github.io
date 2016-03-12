@@ -175,7 +175,7 @@ $("#mapDiv").append(googleMap);
 
 
 
-// Custom works and JS/CSS magic <-------------------------------------------->
+// Custom works and JS/CSS magic <-------------------------------------------------------------------------------------------------------------------->
 
 //Additional Elements
 
@@ -254,5 +254,35 @@ function onStart() {
 onStart();
 //Second Page Function
 function secondPage() {
+	$("#main").children().remove();
+	$("#main").append('<i class="fa fa-folder-o" style="display: none"><br><span id="iconSpan">Do not open</span></i>');
+	var iconStyle = ["color", "white", "margin", "auto", "font-size", "3em", "text-align", "center"];
+	for (var i=0; i<iconStyle.length; i+= 2) {
+		$("#main").children("i").css(iconStyle[i], iconStyle[i+1]);
+	}
+	var headerUsername = "<p id='headerId'> Welcome Agent: '" + username + "'<br><span id='pSpan'>FIB#: A09BC79Z</span><br><a href='index.html'>Disconnect</a></p>";
+	$("#main").prepend(headerUsername);
+	var usernameStyle = ["font-size", "14px", "color", "yellow", "position", "absolute", "display", "block", "text-align", "right", "width", "100%", "right", "5px"];
+	for (var i=0;i<usernameStyle.length;i+=2) {
+		$("#main").children("p").css(usernameStyle[i], usernameStyle[i+1]);
+	}
+	$("#main").find("#pSpan").css("color", "red");
+	$("#pSpan").siblings("a").css("margin-top", "0px");
+	$("#main").find("#iconSpan").css("font-size", "25px");
+	$("#main").find("#iconSpan").css("padding", "0px");
+	$("#main").children("i").fadeIn("slow");
+	$("#main").children("i").hover(
+	function() {
+		$(this).css("background", "#67160E");
+	},
+	function() {
+		$(this).css("background", "");
+	}
+	);
+	$("#main").children("i").click(thirdPage);
+}
+
+function thirdPage() {
+	$("#main").children("i").remove();
 	
 }
