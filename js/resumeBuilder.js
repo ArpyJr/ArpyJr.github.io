@@ -250,6 +250,13 @@ function onStart() {
 	for (var i=0;i<buttonCss.length;i+= 2) {
 		$("#password").siblings("button").css(buttonCss[i],buttonCss[i+1]);
 	}
+	$("#id, #password").keypress(function(e) {
+		var key = e.which;
+		if(key == 13) {
+			setId();
+			secondPage();
+		}
+	});
 }
 onStart();
 //Second Page Function
@@ -284,5 +291,5 @@ function secondPage() {
 
 function thirdPage() {
 	$("#main").children("i").remove();
-	
+
 }
