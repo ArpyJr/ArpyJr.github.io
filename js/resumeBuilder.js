@@ -180,6 +180,8 @@ $("#mapDiv").append(googleMap);
 //Additional Elements
 
 //Magic
+$("head").append("<link href='https://fonts.googleapis.com/css?family=PT+Serif' rel='stylesheet' type='text/css'>");
+$("head").append('<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">');
 var username = "username";
 function setId() {
 	username = $("#id").val();
@@ -188,6 +190,8 @@ function logInButton() {
 	username = $("#id").val();
 	secondPage();
 }
+
+
 //Function on start
 function onStart() {
 	//remove elements
@@ -205,16 +209,16 @@ function onStart() {
 		"appendIdPass": ["<h3>Log in</h3>", "<input id='id' type='text' value='ID'>", "<input id='password' type='text' value='Password'>", "<button onClick='logInButton()'>Log in</button>"]
 	};
 
-	for (var i=0; i<3; i++) {
+	for (var i=0; i<addElement.appendMain.length; i++) {
 		$("#main").append(addElement.appendMain[i]);
 	}
-	for (var i=0; i<2; i++) {
+	for (var i=0; i<addElement.appendLogIn.length; i++) {
 		$("#logIn").append(addElement.appendLogIn[i]);
 	}
-	for (var i=0; i<2; i++) {
+	for (var i=0; i<addElement.appendClassified.length; i++) {
 		$("#classified").append(addElement.appendClassified[i]);
 	}
-	for (var i=0; i<4; i++) {
+	for (var i=0; i<addElement.appendIdPass.length; i++) {
 		$("#idPass").append(addElement.appendIdPass[i]);
 	}
 
@@ -236,7 +240,7 @@ function onStart() {
 	$("#classified").children("h2").css("font-size", "35px");
 	$("#idPass").css("text-align", "center");
 	$("#idPass").children("h3").css("color", "#E4CD1B");
-	$("*").css("font-family", "'PT Serif', serif");
+	$("body").css("font-family", "'PT Serif', serif");
 	var idCss = ["display", "block", "margin", "auto", "background", "#dcdcdc", "border", "none", "width", "200px", "height", "30px", "margin-top", "5px"];
 	for (var i=0;i<idCss.length;i+= 2) {
 		$("#id").css(idCss[i],idCss[i+1]);
