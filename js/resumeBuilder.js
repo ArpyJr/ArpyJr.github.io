@@ -172,3 +172,62 @@ education.display();
 
 //Where I lived
 $("#mapDiv").append(googleMap);
+
+
+
+// Custom works and JS/CSS magic <-------------------------------------------->
+
+//Additional Elements
+
+//Magic
+function index () {
+	//remove elements
+	var removeArray = ["#header", "#workExperience", "#projects", "#education", "#mapDiv", "#lets-connect"];
+	for (var i=0;i<removeArray.length;i++) {
+		$(removeArray[i]).remove();
+	}
+	$("#main").children("div").remove();
+
+	//add elements
+	var addElement = {
+		"appendMain": ["<div class='sideMargin'></div>", "<div id='logIn'></div>", "<div class='sideMargin'></div>"],
+		"appendLogIn": ["<div id='classified'></div>", "<div id='idPass'></div>"],
+		"appendClassified": ["<div class='borderRed'><h1>CLASSIFIED</h1></div>", "<h2>TOP SECRET</h2>"],
+		"appendIdPass": ["<h3>Log in</h3>", "<input type='text' value='ID'><br>", "<input type='text' value='Password'><br>", "<button>Log in</button>"]
+	};
+
+	for (var i=0; i<3; i++) {
+		$("#main").append(addElement.appendMain[i]);
+	}
+	for (var i=0; i<2; i++) {
+		$("#logIn").append(addElement.appendLogIn[i]);
+	}
+	for (var i=0; i<2; i++) {
+		$("#classified").append(addElement.appendClassified[i]);
+	}
+	for (var i=0; i<4; i++) {
+		$("#idPass").append(addElement.appendIdPass[i]);
+	}
+
+	//styling
+	$(".sideMargin").css("width", "10%");
+	$("#logIn").css("width", "80%");
+	var height100 = ["html", "body", "#main", ".sideMargin", "#logIn"];
+	for (var i=0;i<height100.length;i++) {
+		$(height100[i]).css("height", "100%");
+	}
+	$("#main").css("display", "flex");
+	$("#main").css("flex-wrap", "nowrap");
+	$("body").css("background", "#222");
+	$(".borderRed").children("h1").css("color", "#C30000");
+	$("#classified").children("h2").css("color", "#989898");
+	$("#classified").css("text-align", "center");
+	$("#classified").css("margin-top", "100px");
+	$(".borderRed").children("h1").css("border", "2px solid #C30000")
+	$("#classified").children("h2").css("font-size", "35px");
+	$("#idPass").css("text-align", "center");
+	$("#idPass").children("h3").css("color", "#E4CD1B");
+	$("*").css("font-family", "'PT Serif', serif");
+}
+
+index();
