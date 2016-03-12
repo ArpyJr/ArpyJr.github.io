@@ -180,7 +180,16 @@ $("#mapDiv").append(googleMap);
 //Additional Elements
 
 //Magic
-function index () {
+var username = "username";
+function setId() {
+	username = $("#id").val();
+}
+function logInButton() {
+	username = $("#id").val();
+	secondPage();
+}
+//Function on start
+function onStart() {
 	//remove elements
 	var removeArray = ["#header", "#workExperience", "#projects", "#education", "#mapDiv", "#lets-connect"];
 	for (var i=0;i<removeArray.length;i++) {
@@ -193,7 +202,7 @@ function index () {
 		"appendMain": ["<div class='sideMargin'></div>", "<div id='logIn'></div>", "<div class='sideMargin'></div>"],
 		"appendLogIn": ["<div id='classified'></div>", "<div id='idPass'></div>"],
 		"appendClassified": ["<div class='borderRed'><h1>CLASSIFIED</h1></div>", "<h2>TOP SECRET</h2>"],
-		"appendIdPass": ["<h3>Log in</h3>", "<input type='text' value='ID'><br>", "<input type='text' value='Password'><br>", "<button>Log in</button>"]
+		"appendIdPass": ["<h3>Log in</h3>", "<input id='id' type='text' value='ID'>", "<input id='password' type='text' value='Password'>", "<button onClick='logInButton()'>Log in</button>"]
 	};
 
 	for (var i=0; i<3; i++) {
@@ -228,6 +237,18 @@ function index () {
 	$("#idPass").css("text-align", "center");
 	$("#idPass").children("h3").css("color", "#E4CD1B");
 	$("*").css("font-family", "'PT Serif', serif");
+	var idCss = ["display", "block", "margin", "auto", "background", "#dcdcdc", "border", "none", "width", "200px", "height", "30px", "margin-top", "5px"];
+	for (var i=0;i<idCss.length;i+= 2) {
+		$("#id").css(idCss[i],idCss[i+1]);
+		$("#password").css(idCss[i],idCss[i+1]);
+	}
+	var buttonCss = ["margin-top", "10px", "background", "rgb(255, 242, 141)", "border", "none", "width", "80px", "height", "30px", "font-weight", "bold", "color", "#000DBB"];
+	for (var i=0;i<buttonCss.length;i+= 2) {
+		$("#password").siblings("button").css(buttonCss[i],buttonCss[i+1]);
+	}
 }
-
-index();
+onStart();
+//Second Page Function
+function secondPage() {
+	
+}
