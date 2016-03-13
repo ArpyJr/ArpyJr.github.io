@@ -177,11 +177,10 @@ $("#mapDiv").append(googleMap);
 
 // Custom works and JS/CSS magic <-------------------------------------------------------------------------------------------------------------------->
 
-//Additional Elements
-
 //Magic
 $("head").append("<link href='https://fonts.googleapis.com/css?family=PT+Serif' rel='stylesheet' type='text/css'>");
 $("head").append('<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">');
+$("head").append("<link href='https://fonts.googleapis.com/css?family=Roboto+Condensed:400,300italic,300,400italic' rel='stylesheet' type='text/css'>");
 var username = "username";
 function setId() {
 	username = $("#id").val();
@@ -206,7 +205,7 @@ function onStart() {
 		"appendMain": ["<div class='sideMargin'></div>", "<div id='logIn'></div>", "<div class='sideMargin'></div>"],
 		"appendLogIn": ["<div id='classified'></div>", "<div id='idPass'></div>"],
 		"appendClassified": ["<div class='borderRed'><h1>CLASSIFIED</h1></div>", "<h2>TOP SECRET</h2>"],
-		"appendIdPass": ["<h3>Log in</h3>", "<input id='id' type='text' value='ID'>", "<input id='password' type='text' value='Password'>", "<button onClick='logInButton()'>Log in</button>"]
+		"appendIdPass": ["<h3>Log in</h3>", "<input id='id' type='text' value='ID' autofocus>", "<input id='password' type='text' value='Password'>", "<button onClick='logInButton()'>Log in</button>"]
 	};
 
 	for (var i=0; i<addElement.appendMain.length; i++) {
@@ -257,13 +256,14 @@ function onStart() {
 			secondPage();
 		}
 	});
+	$("#idPass").children("button").css("cursor", "pointer");
 }
 onStart();
 //Second Page Function
 function secondPage() {
 	$("#main").children().remove();
 	$("#main").append('<i class="fa fa-folder-o" style="display: none"><br><span id="iconSpan">Do not open</span></i>');
-	var iconStyle = ["color", "white", "margin", "auto", "font-size", "3em", "text-align", "center"];
+	var iconStyle = ["color", "white", "margin", "auto", "font-size", "3em", "text-align", "center", "cursor", "pointer"];
 	for (var i=0; i<iconStyle.length; i+= 2) {
 		$("#main").children("i").css(iconStyle[i], iconStyle[i+1]);
 	}
@@ -277,7 +277,7 @@ function secondPage() {
 	$("#pSpan").siblings("a").css("margin-top", "0px");
 	$("#main").find("#iconSpan").css("font-size", "25px");
 	$("#main").find("#iconSpan").css("padding", "0px");
-	$("#main").children("i").fadeIn("slow");
+	$("#main").children("i").fadeIn(2000);
 	$("#main").children("i").hover(
 	function() {
 		$(this).css("background", "#67160E");
@@ -286,10 +286,106 @@ function secondPage() {
 		$(this).css("background", "");
 	}
 	);
-	$("#main").children("i").click(thirdPage);
+	$("#main").children("i").click(function() {$("#main").css("display", "none"); thirdPage();});
 }
 
 function thirdPage() {
 	$("#main").children("i").remove();
+	$("#main").fadeIn(2000);
+	$("#main").css("display", "block");
+	$("#headerId").css("position", "");
+	$("#headerId").css("right", "");
+	$("#headerId").wrap("<div id='topRight'></div>");
+	$("#topRight").css("width", "20%");
+	$("#topRight").before("<div id='topLeft'></div>");
+	$("#topLeft").css("width", "80%");
+	$("#main").children().wrapAll("<div id='topContainer' />");
+	var topContainerCss = ["width", "100%", "display", "flex", "border-bottom", "1px solid white"];
+	for (var i=0; i<topContainerCss.length; i+=2) {
+		$("#topContainer").css(topContainerCss[i],topContainerCss[i+1]);
+	}
+	var formatRole = HTMLheaderRole.replace("%data%", bio.role);
+	$("#topLeft").prepend(formatRole);
+	var formatName = HTMLheaderName.replace("%data%", bio.name);
+	$("#topLeft").prepend(formatName);
+	$("#topLeft").children("hr").remove();
+	$("#topLeft").children("span").css("color", "white");
+	var mainCss = ["height", "", "width", "100%", "max-width", "1300px", "margin", "auto"];
+	for (var i=0; i<mainCss.length; i+=2) {
+		$("#main").css(mainCss[i], mainCss[i+1]);
+	}
+	//bottom container
+	$("#main").append("<div id='bottomContainer'></div>");
+	var bottomContainerCss = ["height", "80px","margin-top", "50px", "width", "100%", "display", "flex", "flex-wrap", "nowrap", "border-top", "1px solid white", "padding-top", "40px"];
+	for (var i=0; i<bottomContainerCss.length; i+=2) {
+		$("#bottomContainer").css(bottomContainerCss[i], bottomContainerCss[i+1]);
+	}
+	$("#bottomContainer").append("<div class='width20'></div>");
+	var buttonArray = ['button1', 'button2', 'button3', 'button4', 'button5'];
+	for (var i=0; i<5; i++) {
+		$("#bottomContainer").append("<div class='width5' id=" + buttonArray[i] + "></div>");
+	}
+	$("#bottomContainer").append("<div class='width20'></div>");
+	$(".width20").css("width", "20%");
+	$(".width5").css("text-align", "center");
+	$(".width5").css("width", "calc(60% / 5)");
+	var divButtonCss = ["width", "15px", "height", "15px", "border-radius", "50%", "display", "inline-block", "background", "rgb(245, 166, 35)"];
+	for (var i=0; i<buttonArray.length; i++) {
+		$('#' + buttonArray[i]).append("<div></div>");
+	}
+	for (var i=0; i<divButtonCss.length; i+=2) {
+		$(".width5").children("div").css(divButtonCss[i], divButtonCss[i+1]);
+	}
 
+	//main container
+	$("#topContainer").after("<div id='mainContainer'></div>");
+	var mainContainerCss = ["width", "100%", "background", "#ccc", "margin-top", "50px", "min-height", "500px", "box-sizng", "border-box", "border-bottom", "5px solid rgb(95, 95, 95)", "border-right", "5px solid #9A9A9A", "border-radius", "5px", "border-top-left-radius", "0px", "display", "none", "box-sizing", "border-box"];
+	for (var i=0; i<mainContainerCss.length; i++) {
+		$("#mainContainer").css(mainContainerCss[i], mainContainerCss[i+1]);
+	}
+	$("#mainContainer").fadeIn(3000);
+	mainOne();
+}
+
+function mainOne () {
+	$("#mainContainer").append(HTMLwelcomeMsg.replace("%data%", bio.welcomeMessage));
+	$("#mainContainer").append("<div id='mainFooterContainer'></div>");
+	$("#mainFooterContainer").append("<div class='width50'></div>");
+	$("#mainFooterContainer").append("<div class='width50'></div>");
+	var welcomeCss = ["display", "block", "width", "100%", "box-sizing", "border-box"];
+	for (var i=0; i<welcomeCss.length; i+=2) {
+		$("#mainContainer").children("span").css(welcomeCss[i],welcomeCss[i+1]);
+	}
+	var mainFooterCss = ["display", "flex", "flex-wrap", "wrap"];
+	for (var i=0; i<mainFooterCss.length; i+=2) {
+		$("#mainFooterContainer").css(mainFooterCss[i], mainFooterCss[i+1]);
+	}
+	$(".width50").css("width", "50%");
+	$(".width50").css("min-width", "373px");
+	$("#mainFooterContainer").children("div:first").append(HTMLbioPic.replace("%data%", bio.biopic));
+	$("#mainFooterContainer").children("div:last").append(HTMLskillsStart);
+	for (var i=0; i<bio.skills.length; i++) {
+	var formatSkill = HTMLskills.replace("%data%", bio.skills[i]);
+	$("#mainFooterContainer").children("div:last").append(formatSkill);
+	}
+	//main container css
+	var mainSpanCss = ["color", "#160152", "font-style", "normal", "font-family", "'Roboto Condensed', sans-serif", "font-size", "30px", "box-shadow", "-2px 2px 5px rgb(16, 0, 66)", "padding", "15px"];
+	for (var i=0; i<mainSpanCss.length; i+= 2) {
+		$("#mainContainer").children("span").css(mainSpanCss[i], mainSpanCss[i+1]);
+	}
+	$(".width50").children("img").css("min-width", "350px");
+	$(".width50").children("img").css("width", "60%");
+	var skillsH3Css = ["color", "#e49b21", "font-size", "30px", "padding-top", "10px", "font-family", "'Roboto Condensed', sans-serif", "font-weight", "normal"];
+	for (var i=0; i<skillsH3Css.length; i+=2) {
+		$("#skills-h3").css(skillsH3Css[i], skillsH3Css[i+1]);
+	}
+	$(".white-text").css("font-size", "20px");
+	$(".white-text").css("color", "#5f5f5f");
+	$(".flex-item").css("padding-top", "5px");
+	//Page selector highlight
+	$("#button1").children("div").css("background", "#55EF09");
+	$("#button2").children("div").css("background", "#F5A623");
+	$("#button3").children("div").css("background", "#F5A623");
+	$("#button4").children("div").css("background", "#F5A623");
+	$("#button5").children("div").css("background", "#F5A623");
 }
