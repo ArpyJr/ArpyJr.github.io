@@ -158,6 +158,7 @@ ul {
 
 img {
   padding: 10px;
+  width: 50%;
 }
 
 span {
@@ -191,6 +192,9 @@ span {
   }
   .welcome-message {
     display: none;
+  }
+  img {
+    width: 80%;
   }
 }
 

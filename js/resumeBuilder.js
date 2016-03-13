@@ -462,6 +462,20 @@ function mainTwo() {
 
 function mainThree() {
 	deleteFadeIn();
+	$("#mainContainer").append("<div id='projects'></div>");
+	$("#projects").append("<h2>Projects</h2>");
+	for (project in projects.projects) {
+		$("#projects").append(HTMLprojectStart);
+		var formatTitle = HTMLprojectTitle.replace("%data%", projects.projects[project].title);
+		$(".project-entry:last").append(formatTitle);
+		var formatDates = HTMLprojectDates.replace("%data%", projects.projects[project].dates);
+		$(".project-entry:last").append(formatDates);
+		var formatDescription = HTMLprojectDescription.replace("%data%", projects.projects[project].description);
+		$(".project-entry:last").append(formatDescription);
+		var formatImages = HTMLprojectImage.replace("%data%", projects.projects[project].images);
+		$(".project-entry:last").append(formatImages);
+	}
+	$("#projects").find("img").css("max-height", "300px");
 	//Page selector highlight every mainNumber function must have
 	$("#button1").children("button").css("background", "#F5A623");
 	$("#button2").children("button").css("background", "#F5A623");
@@ -478,6 +492,29 @@ function mainThree() {
 
 function mainFour() {
 	deleteFadeIn();
+	$("#mainContainer").append("<div id='education'></div>");
+	$("#education").append("<h2>Education</h2>");
+	for (school in education.schools) {
+		$("#education").append(HTMLschoolStart);
+		var formatName = HTMLschoolName.replace("%data%", education.schools[school].name);
+		var formatDegree = HTMLschoolDegree.replace("%data%", education.schools[school].degree);
+		var nameDegree = formatName + formatDegree;
+		nameDegree = nameDegree.replace("#", education.schools[school].url);
+		$(".education-entry:last").append(nameDegree);
+		var formatDates = HTMLschoolDates.replace("%data%", education.schools[school].dates);
+		$(".education-entry:last").append(formatDates);
+		var formatMajor = HTMLschoolMajor.replace("%data%", education.schools[school].majors);
+		$(".education-entry:last").append(formatMajor);
+	}
+	$("#education").append(HTMLonlineClasses.replace("h3", "h2"));
+	for (school in education.onlineCourses) {
+		$("#education").append(HTMLschoolStart);
+		var titleSchool = HTMLonlineTitle.replace("%data%", education.onlineCourses[school].title) + HTMLonlineSchool.replace("%data%", education.onlineCourses[school].school);
+		titleSchool = titleSchool.replace("#", education.onlineCourses[school].url);
+		$(".education-entry:last").append(titleSchool);
+		$(".education-entry:last").append(HTMLonlineDates.replace("%data%", education.onlineCourses[school].dates));
+		$(".education-entry:last").append(HTMLonlineURL.replace("%data%", education.onlineCourses[school].url).replace("#", education.onlineCourses[school].url));
+	}
 	//Page selector highlight every mainNumber function must have
 	$("#button1").children("button").css("background", "#F5A623");
 	$("#button2").children("button").css("background", "#F5A623");
@@ -494,6 +531,8 @@ function mainFour() {
 
 function mainFive() {
 	deleteFadeIn();
+	$("#mainContainer").append("<div id='mapDiv'></div>");
+	$("#mapDiv").append(googleMap);
 	//Page selector highlight every mainNumber function must have
 	$("#button1").children("button").css("background", "#F5A623");
 	$("#button2").children("button").css("background", "#F5A623");
