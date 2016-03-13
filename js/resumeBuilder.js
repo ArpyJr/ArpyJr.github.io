@@ -192,6 +192,11 @@ function logInButton() {
 function onThisPage() {
 	alert("that's the button for current page :/")
 }
+function deleteFadeIn() {
+	$("#mainContainer").css("display", "none");
+	$("#mainContainer").children().remove();
+	$("#mainContainer").fadeIn(1000);
+}
 
 //Function on start
 function onStart() {
@@ -293,7 +298,7 @@ function secondPage() {
 
 function thirdPage() {
 	$("#main").children("i").remove();
-	$("#main").fadeIn(2000);
+	$("#main").fadeIn(1000);
 	$("#main").css("display", "block");
 	$("#headerId").css("position", "");
 	$("#headerId").css("right", "");
@@ -350,11 +355,12 @@ function thirdPage() {
 	for (var i=0; i<mainContainerCss.length; i++) {
 		$("#mainContainer").css(mainContainerCss[i], mainContainerCss[i+1]);
 	}
-	$("#mainContainer").fadeIn(3000);
 	mainOne();
 }
 
 function mainOne () {
+	deleteFadeIn();
+	//
 	$("#mainContainer").append(HTMLwelcomeMsg.replace("%data%", bio.welcomeMessage));
 	$("#mainContainer").append("<div id='mainFooterContainer'></div>");
 	$("#mainFooterContainer").append("<div class='width50'></div>");
@@ -422,17 +428,82 @@ function mainOne () {
 }
 
 function mainTwo() {
+	deleteFadeIn();
+	$("#mainContainer").append("<div id='workExperience'></div>");
+	$("#workExperience").append("<h2>Work Experience</h2>");
+	for (job in work.jobs) {
+		$("#workExperience").append(HTMLworkStart);
+		var formatEmployer = HTMLworkEmployer.replace("%data%", work.jobs[job].employer);
+		var formatTitle = HTMLworkTitle.replace("%data%", work.jobs[job].title);
+		var employerTitle = formatEmployer + formatTitle;
+		$(".work-entry:last").append(employerTitle);
 
+		var formatDates = HTMLworkDates.replace("%data%", work.jobs[job].dates);
+		$(".work-entry:last").append(formatDates);
+		var formatLocation = HTMLworkLocation.replace("%data%", work.jobs[job].location);
+		$(".work-entry:last").append(formatLocation);
+		var formatDescription = HTMLworkDescription.replace("%data%", work.jobs[job].description);
+		$(".work-entry:last").append(formatDescription);
+	}
+
+	//Page selector highlight every mainNumber function must have
+	$("#button1").children("button").css("background", "#F5A623");
+	$("#button2").children("button").css("background", "#55EF09");
+	$("#button3").children("button").css("background", "#F5A623");
+	$("#button4").children("button").css("background", "#F5A623");
+	$("#button5").children("button").css("background", "#F5A623");
+	//unbind corresponding button
+	$("#button1").children("button").attr("onclick", "mainOne()");
+	$("#button2").children("button").attr("onclick", "onThisPage()");
+	$("#button3").children("button").attr("onclick", "mainThree()");
+	$("#button4").children("button").attr("onclick", "mainFour()");
+	$("#button5").children("button").attr("onclick", "mainFive()");
 }
 
 function mainThree() {
-
+	deleteFadeIn();
+	//Page selector highlight every mainNumber function must have
+	$("#button1").children("button").css("background", "#F5A623");
+	$("#button2").children("button").css("background", "#F5A623");
+	$("#button3").children("button").css("background", "#55EF09");
+	$("#button4").children("button").css("background", "#F5A623");
+	$("#button5").children("button").css("background", "#F5A623");
+	//unbind corresponding button
+	$("#button1").children("button").attr("onclick", "mainOne()");
+	$("#button2").children("button").attr("onclick", "mainTwo()");
+	$("#button3").children("button").attr("onclick", "onThisPage()");
+	$("#button4").children("button").attr("onclick", "mainFour()");
+	$("#button5").children("button").attr("onclick", "mainFive()");
 }
 
 function mainFour() {
-
+	deleteFadeIn();
+	//Page selector highlight every mainNumber function must have
+	$("#button1").children("button").css("background", "#F5A623");
+	$("#button2").children("button").css("background", "#F5A623");
+	$("#button3").children("button").css("background", "#F5A623");
+	$("#button4").children("button").css("background", "#55EF09");
+	$("#button5").children("button").css("background", "#F5A623");
+	//unbind corresponding button
+	$("#button1").children("button").attr("onclick", "mainOne()");
+	$("#button2").children("button").attr("onclick", "mainTwo()");
+	$("#button3").children("button").attr("onclick", "mainThree()");
+	$("#button4").children("button").attr("onclick", "onThisPage()");
+	$("#button5").children("button").attr("onclick", "mainFive()");
 }
 
 function mainFive() {
-
+	deleteFadeIn();
+	//Page selector highlight every mainNumber function must have
+	$("#button1").children("button").css("background", "#F5A623");
+	$("#button2").children("button").css("background", "#F5A623");
+	$("#button3").children("button").css("background", "#F5A623");
+	$("#button4").children("button").css("background", "#F5A623");
+	$("#button5").children("button").css("background", "#55EF09");
+	//unbind corresponding button
+	$("#button1").children("button").attr("onclick", "mainOne()");
+	$("#button2").children("button").attr("onclick", "mainTwo()");
+	$("#button3").children("button").attr("onclick", "mainThree()");
+	$("#button4").children("button").attr("onclick", "mainFour()");
+	$("#button5").children("button").attr("onclick", "onThisPage()");
 }
