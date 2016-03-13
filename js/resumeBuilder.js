@@ -189,7 +189,9 @@ function logInButton() {
 	username = $("#id").val();
 	secondPage();
 }
-
+function onThisPage() {
+	alert("that's the button for current page :/")
+}
 
 //Function on start
 function onStart() {
@@ -329,13 +331,18 @@ function thirdPage() {
 	$(".width20").css("width", "20%");
 	$(".width5").css("text-align", "center");
 	$(".width5").css("width", "calc(60% / 5)");
-	var divButtonCss = ["width", "15px", "height", "15px", "border-radius", "50%", "display", "inline-block", "background", "rgb(245, 166, 35)"];
+	var divButtonCss = ["width", "15px", "height", "15px", "border-radius", "50%", "display", "inline-block", "background", "rgb(245, 166, 35)", "cursor", "pointer", "border", "none"];
 	for (var i=0; i<buttonArray.length; i++) {
-		$('#' + buttonArray[i]).append("<div></div>");
+		$('#' + buttonArray[i]).append("<button></button>");
 	}
 	for (var i=0; i<divButtonCss.length; i+=2) {
-		$(".width5").children("div").css(divButtonCss[i], divButtonCss[i+1]);
+		$(".width5").children("button").css(divButtonCss[i], divButtonCss[i+1]);
 	}
+	$("#button1").children("button").attr("onolick", "mainOne()");
+	$("#button2").children("button").attr("onclick", "mainTwo()");
+	$("#button3").children("button").attr("onclick", "mainThree()");
+	$("#button4").children("button").attr("onclick", "mainFour()");
+	$("#button5").children("button").attr("onclick", "mainFive()");
 
 	//main container
 	$("#topContainer").after("<div id='mainContainer'></div>");
@@ -382,10 +389,16 @@ function mainOne () {
 	$(".white-text").css("font-size", "20px");
 	$(".white-text").css("color", "#5f5f5f");
 	$(".flex-item").css("padding-top", "5px");
-	//Page selector highlight
-	$("#button1").children("div").css("background", "#55EF09");
-	$("#button2").children("div").css("background", "#F5A623");
-	$("#button3").children("div").css("background", "#F5A623");
-	$("#button4").children("div").css("background", "#F5A623");
-	$("#button5").children("div").css("background", "#F5A623");
+	//Page selector highlight every mainNumber function must have
+	$("#button1").children("button").css("background", "#55EF09");
+	$("#button2").children("button").css("background", "#F5A623");
+	$("#button3").children("button").css("background", "#F5A623");
+	$("#button4").children("button").css("background", "#F5A623");
+	$("#button5").children("button").css("background", "#F5A623");
+	//unbind corresponding button
+	$("#button1").children("button").attr("onclick", "onThisPage()");
+	$("#button2").children("button").attr("onclick", "mainTwo()");
+	$("#button3").children("button").attr("onclick", "mainThree()");
+	$("#button4").children("button").attr("onclick", "mainFour()");
+	$("#button5").children("button").attr("onclick", "mainFive()");
 }
