@@ -532,7 +532,9 @@ function mainFour() {
 function mainFive() {
 	deleteFadeIn();
 	$("#mainContainer").append("<div id='mapDiv'></div>");
+	$("#mapDiv").append("<h2>Where I lived and worked</h2>");
 	$("#mapDiv").append(googleMap);
+	initializeMap();
 	//Page selector highlight every mainNumber function must have
 	$("#button1").children("button").css("background", "#F5A623");
 	$("#button2").children("button").css("background", "#F5A623");
