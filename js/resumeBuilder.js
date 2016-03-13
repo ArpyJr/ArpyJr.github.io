@@ -265,7 +265,7 @@ onStart();
 function secondPage() {
 	$("#main").children().remove();
 	$("#main").append('<i class="fa fa-folder-o" style="display: none"><br><span id="iconSpan">Do not open</span></i>');
-	var iconStyle = ["color", "white", "margin", "auto", "font-size", "3em", "text-align", "center", "cursor", "pointer"];
+	var iconStyle = ["color", "white", "margin", "auto", "font-size", "3em", "text-align", "center", "cursor", "pointer", "margin-top", "50vh", "max-height", "2.7em"];
 	for (var i=0; i<iconStyle.length; i+= 2) {
 		$("#main").children("i").css(iconStyle[i], iconStyle[i+1]);
 	}
@@ -382,13 +382,31 @@ function mainOne () {
 	}
 	$(".width50").children("img").css("min-width", "350px");
 	$(".width50").children("img").css("width", "60%");
-	var skillsH3Css = ["color", "#e49b21", "font-size", "30px", "padding-top", "10px", "font-family", "'Roboto Condensed', sans-serif", "font-weight", "normal"];
+	var skillsH3Css = ["color", "#e49b21", "font-size", "30px", "padding-top", "10px", "font-family", "'Roboto Condensed', sans-serif", "font-weight", "normal", "display", "block"];
 	for (var i=0; i<skillsH3Css.length; i+=2) {
 		$("#skills-h3").css(skillsH3Css[i], skillsH3Css[i+1]);
 	}
 	$(".white-text").css("font-size", "20px");
 	$(".white-text").css("color", "#5f5f5f");
 	$(".flex-item").css("padding-top", "5px");
+	$("#mainContainer").append("<ul id='mainContainerContacts'></ul>")
+	var formatMobile = HTMLmobile.replace("%data%", bio.contact.mobile);
+	var formatEmail = HTMLemail.replace("%data%", bio.contact.email);
+	var formatGithub = HTMLgithub.replace("%data%", bio.contact.github);
+	var formatLocation = HTMLlocation.replace("%data%", bio.contact.location);
+	var contactsArray = [formatMobile, formatEmail, formatGithub, formatLocation];
+	for (var i=0; i<contactsArray.length; i++) {
+		$("#mainContainerContacts").append(contactsArray[i]);
+	}
+	var mainContactsCss = ["display", "inline-flex", "width", "100%", "margin-top", "80px", "margin-bottom", "20px", "flex-wrap", "wrap"];
+	for (var i=0; i<mainContactsCss.length; i+=2) {
+		$("#mainContainerContacts").css(mainContactsCss[i], mainContactsCss[i+1]);
+	}
+	$("#mainContainerContacts").children("li").css("margin", "auto");
+	$("#mainContainerContacts").find(".orange-text").css("color", "#E49B21");
+	$("#mainContainerContacts").find(".orange-text").css("font-weight", "bold");
+	$("#mainContainerContacts").find(".white-text").css("color", "#5F5F5F");
+
 	//Page selector highlight every mainNumber function must have
 	$("#button1").children("button").css("background", "#55EF09");
 	$("#button2").children("button").css("background", "#F5A623");
@@ -401,4 +419,20 @@ function mainOne () {
 	$("#button3").children("button").attr("onclick", "mainThree()");
 	$("#button4").children("button").attr("onclick", "mainFour()");
 	$("#button5").children("button").attr("onclick", "mainFive()");
+}
+
+function mainTwo() {
+
+}
+
+function mainThree() {
+
+}
+
+function mainFour() {
+
+}
+
+function mainFive() {
+
 }
